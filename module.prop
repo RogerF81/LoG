@@ -1,0 +1,7 @@
+id=SD808_HMP
+name=HMP Magisk module for SD808 devices
+version=v2.1
+versionCode=1
+author=RogerF81
+description=This is a HMP tweaks Magisk module for Snapdragon 808 devices.
+template=3
