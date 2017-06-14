@@ -38,10 +38,10 @@ chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 echo 1440000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 #Tweak LITTLE cluster
 echo 76 600000:40 672000:58 787200:82 960000:89 1248000:99 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-echo 120000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
+echo 356940 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
 echo 600000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
-echo 80000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-echo 30000 460000:0 600000:60000 672000:100000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
+echo 20000 460000:0 600000:60000 672000:100000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 400 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
@@ -62,12 +62,12 @@ echo 384000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 echo 1824000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
 #Tweak big cluster
 echo 76 633000:48 768000:57 1248000:74 1440000:86 1824000:99 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
-echo 120000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack
+echo 178470 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack
 echo 1824000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
-echo 80000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
+echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
 echo 10000 1440000:120000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay
 echo 400 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
-echo 25000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
+echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis
 echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif
 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/boost
@@ -254,7 +254,7 @@ if [ -e "/sys/block/zram0" ]; then
 	echo 1 > /sys/block/zram0/queue/rq_affinity
 	echo 8 > /sys/block/zram0/max_comp_streams
 	chmod 644 /sys/block/zram0/disksize
-	echo 1073741824 > /sys/block/zram0/disksize
+	echo 768000000 > /sys/block/zram0/disksize
 	mkswap /dev/block/zram0 > /dev/null 2>&1
 	swapon /dev/block/zram0 > /dev/null 2>&1
 fi
@@ -284,7 +284,7 @@ echo 0 > /sys/block/mmcblk0rpmb/queue/add_random
 echo 0 > /sys/block/mmcblk0rpmb/queue/iostats
 echo 1 > /sys/block/mmcblk0rpmb/queue/nomerges
 echo 0 > /sys/block/mmcblk0rpmb/queue/rotational
-echo 2 > /sys/block/mmcblk0rpmb/queue/rq_affinity
+echo 1 > /sys/block/mmcblk0rpmb/queue/rq_affinity
 echo "bfq" > /sys/block/mmcblk0rpmb/queue/scheduler
 echo 16384 > /sys/block/mmcblk0rpmb/queue/iosched/back_seek_max
 echo 1 > /sys/block/mmcblk0rpmb/queue/iosched/back_seek_penalty
@@ -308,7 +308,7 @@ for i in /sys/block/loop*; do
    echo 0 > $i/queue/iostats
    echo 1 > $i/queue/nomerges
    echo 0 > $i/queue/rotational
-   echo 2 > $i/queue/rq_affinity
+   echo 1 > $i/queue/rq_affinity
 done
 ## Block ram
 for j in /sys/block/ram*; do
@@ -316,7 +316,7 @@ for j in /sys/block/ram*; do
    echo 0 > $j/queue/iostats
    echo 1 > $j/queue/nomerges
    echo 0 > $j/queue/rotational
-   echo 2 > $j/queue/rq_affinity
+   echo 1 > $j/queue/rq_affinity
 done
 ## Charging 
 echo "0" > /sys/kernel/fast_charge/force_fast_charge 
