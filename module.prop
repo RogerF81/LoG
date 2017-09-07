@@ -1,7 +1,7 @@
-id=SD808_HMP
-name=HMP Magisk module for SD808 devices
-version=v2.2
+id=LoG
+name=LoG kernel-tweaks
+version=v3.0
 versionCode=1
 author=RogerF81
-description=This is a HMP tweaks Magisk module for Snapdragon 808 devices.
-template=3
+description=This module applies interavtive and other kernel-tweaks on Snapdragon 808 devices.
+template=1400
