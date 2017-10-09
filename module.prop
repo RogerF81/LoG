@@ -1,6 +1,6 @@
 id=LoG
 name=LoG kernel-tweaks
-version=v3.0
+version=v4.0
 versionCode=1
 author=RogerF81
 description=This module applies interavtive and other kernel-tweaks on Snapdragon 808 devices.
