@@ -46,6 +46,7 @@ chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 echo 1555200 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 #Tweak LITTLE cluster
+chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
 echo 76 600000:40 672000:58 768000:82 960000:89 1248000:94  1478000:99 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 echo 356940 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
 echo 600000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
@@ -63,6 +64,7 @@ echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction
+chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
 #big cluster
 chmod 644 /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
 echo interactive > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
@@ -70,6 +72,7 @@ chmod 644 /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 echo 384000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 echo 1958400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
 #Tweak big cluster
+chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/*
 echo 76 633000:48 768000:57 1248000:74 1440000:86 1958400:99 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
 echo 178470 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack
 echo 1958400 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
@@ -87,6 +90,7 @@ echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load
 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse_duration
 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/enable_prediction
+chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/interactive/*
 #Disable input boost
 if [ -e "/sys/kernel/cpu_input_boost" ]; then
 	chmod 644 /sys/kernel/cpu_input_boost/enable
