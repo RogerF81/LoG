@@ -7,9 +7,9 @@ MODDIR=${0%/*}
 # More info in the main Magisk thread
 #Original author: Alcolawl
 #Settings By: RogerF81
-#Device: LG G4 (h815/h811)
+#Device: Nexus 6P
 #Codename: LoG
-#SoC: Snapdragon 808
+#SoC: Snapdragon 810
 #Build Status: Final
 #Version: 4.0
 #Last Updated: 10/10/2017
@@ -34,27 +34,30 @@ if [ -e "/data/system/perfd/default_values" ]; then
 	rm /data/system/perfd/default_values
 fi
 chmod 644 /sys/devices/system/cpu/online
-echo 0-5 > /sys/devices/system/cpu/online
+echo 0-7 > /sys/devices/system/cpu/online
 echo 1 > /sys/devices/system/cpu/cpu0/online
 echo 1 > /sys/devices/system/cpu/cpu1/online
 echo 1 > /sys/devices/system/cpu/cpu2/online
 echo 1 > /sys/devices/system/cpu/cpu3/online
-echo 1 > //sys/devices/system/cpu/cpu4/online
-echo 1 > //sys/devices/system/cpu/cpu5/online
-chmod 444 /sys/devices/system/cpu/online
+echo 1 > /sys/devices/system/cpu/cpu4/online
+echo 1 > /sys/devices/system/cpu/cpu5/online
+echo 1 > /sys/devices/system/cpu/cpu6/online
+echo 1 > /sys/devices/system/cpu/cpu7/online
 #LITTLE cluster
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 echo interactive > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+echo 384000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-echo 1440000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo 1555200 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 #Tweak LITTLE cluster
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
-echo 76 600000:40 672000:58 787200:82 960000:89 1248000:99 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+echo 76 600000:40 672000:58 768000:82 960000:89 1248000:94  1478000:99 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 echo 356940 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
 echo 600000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
 echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-echo 20000 460000:0 600000:60000 672000:100000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+echo 20000 460000:0 600000:60000 960000:100000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 400 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
@@ -73,12 +76,12 @@ chmod 644 /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
 echo interactive > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
 chmod 644 /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 echo 384000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
-echo 1824000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+echo 1958400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
 #Tweak big cluster
 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/*
-echo 76 633000:48 768000:57 1248000:74 1440000:86 1824000:99 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
+echo 76 633000:48 768000:57 1248000:74 1440000:86 1958400:99 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
 echo 178470 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack
-echo 1824000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
+echo 1958400 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
 echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
 echo 10000 1440000:120000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay
 echo 400 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
@@ -178,7 +181,7 @@ fi
 if [ "$maple" == "true" ]; then
 	if [ -e $string3 ]; then
 		echo "setting maple"
-		echo 512 > /sys/block/mmcblk0/bdi/read_ahead_kb
+		echo 1024 > /sys/block/mmcblk0/bdi/read_ahead_kb
 		echo "maple" > /sys/block/mmcblk0/queue/scheduler
 		echo 16 > /sys/block/mmcblk0/queue/iosched/fifo_batch
 		echo 4 > /sys/block/mmcblk0/queue/iosched/writes_starved
@@ -205,33 +208,6 @@ if [ "$maple" == "true" ]; then
 		echo 1 > /sys/block/mmcblk0/queue/nomerges
 		echo 0 > /sys/block/mmcblk0/queue/rotational
 		echo 1 > /sys/block/mmcblk0/queue/rq_affinity
-		echo 1024 > /sys/block/mmcblk1/bdi/read_ahead_kb
-		echo "maple" > /sys/block/mmcblk1/queue/scheduler
-		echo 16 > /sys/block/mmcblk1/queue/iosched/fifo_batch
-		echo 4 > /sys/block/mmcblk1/queue/iosched/writes_starved
-		echo 10 > /sys/block/mmcblk1/queue/iosched/sleep_latency_multiple
-		#echo 200 > /sys/block/mmcblk1/queue/iosched/async_read_expire   ##default values
-		#echo 500 > /sys/block/mmcblk1/queue/iosched/async_write_expire   ##default values
-		#echo 100 > /sys/block/mmcblk1/queue/iosched/sync_read_expire   ##default values
-		#echo 350 > /sys/block/mmcblk1/queue/iosched/sync_write_expire   ##default values
-		#echo 5 * HZ > /sys/block/mmcblk1/queue/iosched/async_read_expire  ##if CONFIG_HZ=1000
-		#echo 5 * HZ > /sys/block/mmcblk1/queue/iosched/async_write_expire  ##if CONFIG_HZ=1000
-		#echo HZ / 2 > /sys/block/mmcblk1/queue/iosched/sync_read_expire  ##if CONFIG_HZ=1000
-		#echo HZ / 2 > /sys/block/mmcblk1/queue/iosched/sync_write_expire  ##if CONFIG_HZ=1000
-		#echo 250 > /sys/block/mmcblk1/queue/iosched/async_read_expire  ##previously used values
-		#echo 450 > /sys/block/mmcblk1/queue/iosched/async_write_expire  ##previously used values
-		#echo 350 > /sys/block/mmcblk1/queue/iosched/sync_read_expire  ##previously used values
-		#echo 550 > /sys/block/mmcblk1/queue/iosched/sync_write_expire  ##previously used values
-		echo 1500 > /sys/block/mmcblk1/queue/iosched/async_read_expire
-		echo 1500 > /sys/block/mmcblk1/queue/iosched/async_write_expire
-		echo 150 > /sys/block/mmcblk1/queue/iosched/sync_read_expire
-		echo 150 > /sys/block/mmcblk1/queue/iosched/sync_write_expire
-		echo 128 > /sys/block/mmcblk1/queue/nr_requests
-		echo 0 > /sys/block/mmcblk1/queue/add_random
-		echo 0 > /sys/block/mmcblk1/queue/iostats
-		echo 1 > /sys/block/mmcblk1/queue/nomerges
-		echo 0 > /sys/block/mmcblk1/queue/rotational
-		echo 1 > /sys/block/mmcblk1/queue/rq_affinity
 		echo 1024 > /sys/block/mmcblk0rpmb/bdi/read_ahead_kb
 		echo "maple" > /sys/block/mmcblk0rpmb/queue/scheduler
 		echo 1 > /sys/block/mmcblk0rpmb/queue/iosched/fifo_batch
@@ -262,7 +238,7 @@ if [ "$maple" == "true" ]; then
 elif [ "$maple" == "false" ] && [ "cfq" == "true" ]; then
 	if [ -e $string3 ]; then
 		echo setting cfq
-		echo 512 > /sys/block/mmcblk0/bdi/read_ahead_kb
+		echo 1024 > /sys/block/mmcblk0/bdi/read_ahead_kb
 		echo "cfq" > /sys/block/mmcblk0/queue/scheduler
 		echo 1 > /sys/block/mmcblk0/queue/iosched/back_seek_penalty
 		echo 16384 > /sys/block/mmcblk0/queue/iosched/back_seek_max
@@ -280,25 +256,6 @@ elif [ "$maple" == "false" ] && [ "cfq" == "true" ]; then
 		echo 0 > /sys/block/mmcblk0/queue/iostats
 		echo 1 > /sys/block/mmcblk0/queue/nomerges
 		echo 0 > /sys/block/mmcblk0/queue/rotational
-		echo 1 > /sys/block/mmcblk1/queue/rq_affinity
-		echo 1024 > /sys/block/mmcblk1/bdi/read_ahead_kb
-		echo "cfq" > /sys/block/mmcblk1/queue/scheduler
-		echo 1 > /sys/block/mmcblk1/queue/iosched/back_seek_penalty
-		echo 16384 > /sys/block/mmcblk1/queue/iosched/back_seek_max
-		echo 120 > /sys/block/mmcblk1/queue/iosched/fifo_expire_sync
-		echo 250 > /sys/block/mmcblk1/queue/iosched/fifo_expire_async
-		echo 0 > /sys/block/mmcblk1/queue/iosched/slice_idle
-		echo 8 > /sys/block/mmcblk1/queue/iosched/group_idle
-		echo 1 > /sys/block/mmcblk1/queue/iosched/low_latency
-		echo 10 > /sys/block/mmcblk1/queue/iosched/quantum
-		echo 40 > /sys/block/mmcblk1/queue/iosched/slice_async
-		echo 2 > /sys/block/mmcblk1/queue/iosched/slice_async_rq
-		echo 100 > /sys/block/mmcblk1/queue/iosched/slice_sync
-		echo 300 > /sys/block/mmcblk1/queue/iosched/target_latencymax_time
-		echo 0 > /sys/block/mmcblk1/queue/add_random
-		echo 0 > /sys/block/mmcblk1/queue/iostats
-		echo 1 > /sys/block/mmcblk1/queue/nomerges
-		echo 0 > /sys/block/mmcblk1/queue/rotational
 		echo 1 > /sys/block/mmcblk1/queue/rq_affinity
 		echo "cfq" > /sys/block/mmcblk0rpmb/queue/scheduler
 		echo 1 > /sys/block/mmcblk0rpmb/queue/iosched/back_seek_penalty
@@ -322,19 +279,12 @@ elif [ "$maple" == "false" ] && [ "cfq" == "true" ]; then
 elif [ "$maple" == "false" ] && [ "cfq" == "false" ]&& [ "noop" == "true" ]; then
 	if [ -e $string3 ]; then
 		echo setting noop
-		echo 512 > /sys/block/mmcblk0/bdi/read_ahead_kb
+		echo 1024 > /sys/block/mmcblk0/bdi/read_ahead_kb
 		echo "noop" > /sys/block/mmcblk0/queue/scheduler
 		echo 0 > /sys/block/mmcblk0/queue/add_random
 		echo 0 > /sys/block/mmcblk0/queue/iostats
 		echo 1 > /sys/block/mmcblk0/queue/nomerges
 		echo 0 > /sys/block/mmcblk0/queue/rotational
-		echo 1 > /sys/block/mmcblk1/queue/rq_affinity
-		echo 1024 > /sys/block/mmcblk1/bdi/read_ahead_kb
-		echo "noop" > /sys/block/mmcblk1/queue/scheduler
-		echo 0 > /sys/block/mmcblk1/queue/add_random
-		echo 0 > /sys/block/mmcblk1/queue/iostats
-		echo 1 > /sys/block/mmcblk1/queue/nomerges
-		echo 0 > /sys/block/mmcblk1/queue/rotational
 		echo 1 > /sys/block/mmcblk1/queue/rq_affinity
 		echo "noop" > /sys/block/mmcblk0rpmb/queue/scheduler
 		echo 0 > /sys/block/mmcblk0rpmb/queue/add_random
@@ -471,7 +421,7 @@ echo Y > /sys/module/workqueue/parameters/power_efficient
 echo 500 > /proc/sys/vm/dirty_expire_centisecs
 echo 6000 > /proc/sys/vm/dirty_writeback_centisecs
 echo 1 > /proc/sys/vm/oom_kill_allocating_task
-echo 2 > /proc/sys/vm/page-cluster
+echo 3 > /proc/sys/vm/page-cluster
 echo 60 > /proc/sys/vm/swappiness
 echo 100 > /proc/sys/vm/vfs_cache_pressure
 echo 40 > /proc/sys/vm/dirty_ratio

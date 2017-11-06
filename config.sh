@@ -43,7 +43,7 @@ LATESTARTSERVICE=true
 print_modname() {
   ui_print "*******************************"
   ui_print "        Kernel-tweaks          "
-  ui_print "      for Snapdragon 808       "
+  ui_print "      for Snapdragon 810       "
   ui_print "*******************************"
 }
 
