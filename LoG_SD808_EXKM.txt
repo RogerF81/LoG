@@ -1,0 +1,55 @@
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1440000
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 400
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay 20000 460000:0 600000:60000 672000:100000
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 600000
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 356940
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 76 600000:40 672000:58 787200:82 960000:89 1248000:99
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 0
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/boost 0
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 0
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 0
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 0
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 1
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 0
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 0
+/sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 0
+/sys/devices/system/cpu/cpu4/cpufreq/scaling_governor interactive
+/sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 384000
+/sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1824000
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load 400
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay 10000 1440000:120000
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate 20000
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq 1824000
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack 178470
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads 76 633000:48 768000:57 1248000:74 1440000:86 1824000:99
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 0
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/boost 0
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/fast_ramp_down 1
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/align_windows 0
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/use_migration_notif 1
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load 1
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 0
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif 1
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse_duration 0
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy 0
+/sys/devices/system/cpu/cpu4/cpufreq/interactive/enable_prediction 0
+/sys/module/cpu_boost/parameters/input_boost_enabled 0
+/sys/module/cpu_boost/parameters/input_boost_freq 0:0 1:0 2:0 3:0 4:0 5:0
+/sys/module/cpu_boost/parameters/input_boost_ms 0
+/sys/module/cpu_boost/parameters/boost_ms 0
+/sys/module/msm_performance/parameters/touchboost 0
+/sys/module/cpu_boost/parameters/sync_threshold 0
+/sys/module/msm_thermal/core_control/enabled 1
+/sys/module/msm_thermal/parameters/enabled 0
+/sys/module/msm_performance/parameters/temp_threshold 38
+/proc/sys/kernel/sched_window_stats_policy 2
+/proc/sys/kernel/sched_spill_nr_run 3
+/proc/sys/kernel/sched_spill_load 74
+/proc/sys/kernel/sched_ravg_hist_size 4
+/proc/sys/kernel/sched_downmigrate 33
+/proc/sys/kernel/sched_upmigrate 68
